@@ -1,0 +1,32 @@
+{
+  "name": "react-native-megacool",
+  "version": "0.0.1",
+  "summary": "TODO",
+  "description": "React Native Megacool bridge",
+  "homepage": "https://github.com/wowmaking/react-native-megacool",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Dmitriy Kazlouski": "d.kazlouski@wowmaking.net"
+  },
+  "platforms": {
+    "ios": "9.0",
+    "tvos": "10.0"
+  },
+  "source": {
+    "git": "https://github.com/wowmaking/react-native-megacool.git",
+    "tag": "v0.0.1"
+  },
+  "source_files": "ios/**/*.{h,m,swift}",
+  "requires_arc": true,
+  "dependencies": {
+    "React": [
+
+    ],
+    "Megacool": [
+
+    ]
+  }
+}
