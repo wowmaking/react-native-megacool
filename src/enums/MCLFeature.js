@@ -1,4 +1,7 @@
-export default {
+/**
+ * @enum {string}
+ */
+export const MCLFeature = {
   None: 'None',
   Gifs: 'Gifs',
   Analytics: 'Analytics',
@@ -6,4 +9,4 @@ export default {
   GifPersistency: 'GifPersistency',
   ShareNoCopyGif: 'ShareNoCopyGif',
   ShareCopyLink: 'ShareCopyLink',
-}
+};

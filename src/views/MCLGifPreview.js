@@ -1,15 +1,15 @@
-import React from "react";
+import React from 'react';
 import {
   StyleSheet,
   Dimensions,
   requireNativeComponent
-} from "react-native";
+} from 'react-native';
 
 const { width, height } = Dimensions.get('window');
 
 const NativeMCLGifPreview = requireNativeComponent('MCLGifPreview');
 
-export default class MCLGifPreview extends React.PureComponent {
+export class MCLGifPreview extends React.PureComponent {
   render() {
     return (
       <NativeMCLGifPreview

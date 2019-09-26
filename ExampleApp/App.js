@@ -7,7 +7,8 @@ import {
   TouchableOpacity,
   SafeAreaView,
 } from "react-native";
-import Megacool, {
+import {
+  Megacool,
   MCLOverflowStrategy,
   MCLCaptureMethod,
   MCLSharingStrategy,
@@ -17,7 +18,8 @@ import Megacool, {
   MCLShareConfig,
   MCLRecordingConfig,
   MCLGifPreview,
-} from "@wowmaking/react-native-megacool";
+} from "../src";
+// } from "@wowmaking/react-native-megacool"; // Use this import in your project instead
 
 const Button = ({ text, onPress }) => (
   <TouchableOpacity style={styles.btn} onPress={onPress}>
@@ -105,14 +107,14 @@ export default class App extends Component {
   };
 
   handlePresentShareToMail = () => {
-    Megacool.presentShareToMail();
+    Megacool.presentShareToMail(
+      new MCLShareConfig()
+    );
   };
 
   handleCaptureFrame = () => {
     Megacool.captureFrame(
-      {
-        overflowStrategy: MCLOverflowStrategy.Latest
-      },
+      new MCLRecordingConfig().setOverflowStrategy(MCLOverflowStrategy.Latest),
       true
     );
   };

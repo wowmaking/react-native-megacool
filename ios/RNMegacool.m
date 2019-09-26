@@ -15,9 +15,12 @@ RCT_EXPORT_METHOD(start:(NSString *)appConfig
     RCTExecuteOnMainQueue(^{
         [Megacool startWithAppConfig:appConfig andConfigBlock:^(MCLMegacoolConfig * _Nonnull config) {
             config.delegate = self;
-            NSURL* baseUrl = [RCTConvert NSURL:configBlock[@"baseUrl"]];
-            if (baseUrl) {
-                config.baseUrl = baseUrl;
+            
+            if (configBlock != nil) {
+                NSURL* baseUrl = [RCTConvert NSURL:configBlock[@"baseUrl"]];
+                if (baseUrl) {
+                    config.baseUrl = baseUrl;
+                }
             }
         }];
     });

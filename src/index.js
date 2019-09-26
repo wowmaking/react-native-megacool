@@ -1,27 +1,15 @@
-import Megacool from './Megacool';
+export { Megacool } from './Megacool'
 
-import _MCLCaptureMethod from './enums/MCLCaptureMethod';
-import _MCLOverflowStrategy from './enums/MCLOverflowStrategy';
-import _MCLSharingStrategy from './enums/MCLSharingStrategy';
-import _MCLGIFColorTable from './enums/MCLGIFColorTable';
-import _MCLFeature from './enums/MCLFeature';
+export { MCLGifPreview } from './views/MCLGifPreview'
 
-import _MCLPreviewConfig from './configs/MCLPreviewConfig';
-import _MCLRecordingConfig from './configs/MCLRecordingConfig';
-import _MCLShareConfig from './configs/MCLShareConfig';
+export { MCLCaptureMethod } from './enums/MCLCaptureMethod'
+export { MCLOverflowStrategy } from './enums/MCLOverflowStrategy'
+export { MCLSharingStrategy } from './enums/MCLSharingStrategy'
+export { MCLGIFColorTable } from './enums/MCLGIFColorTable'
+export { MCLFeature } from './enums/MCLFeature'
+export { MCLPopoverArrowDirection } from './enums/MCLPopoverArrowDirection'
 
-import _MCLGifPreview from './views/MCLGifPreview';
-
-export default Megacool
-
-export const MCLCaptureMethod = _MCLCaptureMethod;
-export const MCLOverflowStrategy = _MCLOverflowStrategy;
-export const MCLSharingStrategy = _MCLSharingStrategy;
-export const MCLGIFColorTable = _MCLGIFColorTable;
-export const MCLFeature = _MCLFeature;
-
-export const MCLPreviewConfig = _MCLPreviewConfig;
-export const MCLShareConfig = _MCLShareConfig;
-export const MCLRecordingConfig = _MCLRecordingConfig;
-
-export const MCLGifPreview = _MCLGifPreview;
+export { MCLMegacoolConfig } from './configs/MCLMegacoolConfig'
+export { MCLPreviewConfig } from './configs/MCLPreviewConfig'
+export { MCLShareConfig } from './configs/MCLShareConfig'
+export { MCLRecordingConfig } from './configs/MCLRecordingConfig'
