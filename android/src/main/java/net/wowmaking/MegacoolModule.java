@@ -99,8 +99,6 @@ public class MegacoolModule extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void captureFrame(ReadableMap recordingConfig, boolean forceAdd) {
-        int a = 1;
-
         Megacool.getInstance().captureFrame(
                 getRootView(),
                 MegacoolSerializer.readableMapToRecordingConfig(recordingConfig),
