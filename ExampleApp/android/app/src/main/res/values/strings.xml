@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">ExampleApp</string>
+    <string name="megacool_scheme" translatable="false">exampleapp</string>
+    <string name="megacool_base_url_path" translatable="false">com.exampleapp</string>
+    <string name="megacool_app_identifier" translatable="false">com.exampleapp</string>
 </resources>

@@ -10,6 +10,8 @@ import _MCLPreviewConfig from './configs/MCLPreviewConfig';
 import _MCLRecordingConfig from './configs/MCLRecordingConfig';
 import _MCLShareConfig from './configs/MCLShareConfig';
 
+import _MCLGifPreview from './views/MCLGifPreview';
+
 export default Megacool
 
 export const MCLCaptureMethod = _MCLCaptureMethod;
@@ -21,3 +23,5 @@ export const MCLFeature = _MCLFeature;
 export const MCLPreviewConfig = _MCLPreviewConfig;
 export const MCLShareConfig = _MCLShareConfig;
 export const MCLRecordingConfig = _MCLRecordingConfig;
+
+export const MCLGifPreview = _MCLGifPreview;

@@ -1,4 +1,4 @@
-package com.reactlibrary;
+package net.wowmaking;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -8,16 +8,19 @@ import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.NativeModule;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.uimanager.ViewManager;
-import com.facebook.react.bridge.JavaScriptModule;
 
 public class MegacoolPackage implements ReactPackage {
     @Override
     public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
-        return Arrays.<NativeModule>asList(new MegacoolModule(reactContext));
+        return Arrays.<NativeModule>asList(
+            new MegacoolModule(reactContext)
+        );
     }
 
     @Override
     public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
-        return Collections.emptyList();
+        return Arrays.<ViewManager>asList(
+            new MegacoolGifPreviewManager()
+        );
     }
 }

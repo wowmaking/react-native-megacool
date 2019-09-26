@@ -39,4 +39,8 @@ export default class MCLShareConfig {
     this.strategy = strategy;
     return this;
   }
+  setModalTitle(modalTitle) {
+    this.modalTitle = modalTitle;
+    return this;
+  }
 }

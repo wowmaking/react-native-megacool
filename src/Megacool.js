@@ -36,11 +36,8 @@ export default {
   registerScoreChange(scoreDelta = 0) {
     return RNMegacool.registerScoreChange(scoreDelta);
   },
-  getNumberOfFrames() {
-    return RNMegacool.getNumberOfFrames();
-  },
-  getCaptureMethod() {
-    return RNMegacool.getCaptureMethod();
+  getNumberOfFrames(recordingId) {
+    return RNMegacool.getNumberOfFrames(recordingId);
   },
   setCaptureMethod(captureMethod, scaleFactor = 0.5) {
     return RNMegacool.setCaptureMethod(captureMethod, scaleFactor);
@@ -68,9 +65,6 @@ export default {
   },
   setKeepCompletedRecordings(keepCompletedRecordings) {
     return RNMegacool.setKeepCompletedRecordings(keepCompletedRecordings);
-  },
-  getDebug() {
-    return RNMegacool.getDebug();
   },
   setDebug(enabled) {
     return RNMegacool.setDebug(enabled);

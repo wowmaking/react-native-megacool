@@ -5,7 +5,7 @@ import {
   View,
   ScrollView,
   TouchableOpacity,
-  SafeAreaView
+  SafeAreaView,
 } from "react-native";
 import Megacool, {
   MCLOverflowStrategy,
@@ -15,7 +15,8 @@ import Megacool, {
   MCLFeature,
   MCLPreviewConfig,
   MCLShareConfig,
-  MCLRecordingConfig
+  MCLRecordingConfig,
+  MCLGifPreview,
 } from "@wowmaking/react-native-megacool";
 
 const Button = ({ text, onPress }) => (
@@ -29,68 +30,23 @@ const RECORDING_ID = "REC_1";
 export default class App extends Component {
   state = {
     shares: [],
-    captureMethod: "n/a",
     numberOfFrames: "n/a",
-    debugEnabled: "n/a",
     recordingScore: "n/a",
-    userId: "n/a"
+    userId: "n/a",
+    preview: false,
   };
 
   componentDidMount() {
     setInterval(() => {
-      // Promise.all([
-      //   Megacool.getNumberOfFrames(),
-      //   Megacool.getCaptureMethod(),
-      //   Megacool.getShares(),
-      //   Megacool.getDebug(),
-      //   Megacool.getRecordingScore(),
-      //   Megacool.getUserId()
-      // ])
-      //   .then(response => {
-      //     void response;
-      //     debugger;
-      //   /*  const [
-      //       numberOfFrames,
-      //       captureMethod,
-      //       shares,
-      //       debugEnabled,
-      //       userId
-      //     ] = response;
-      //
-      //     debugger;
-      //
-      //     this.setState({
-      //       numberOfFrames,
-      //       captureMethod,
-      //       shares,
-      //       debugEnabled,
-      //       userId
-      //     });*/
-      //   })
-      //   .catch(console.error);
-
       Megacool.getNumberOfFrames().then(numberOfFrames => {
         this.setState({
           numberOfFrames,
         });
       });
 
-      Megacool.getCaptureMethod().then(captureMethod => {
-        this.setState({
-          captureMethod,
-        });
-      });
-
-
       Megacool.getShares().then(shares => {
         this.setState({
           shares,
-        })
-      });
-
-      Megacool.getDebug().then(debugEnabled => {
-        this.setState({
-          debugEnabled: debugEnabled ? 'ON' : 'OFF',
         })
       });
 
@@ -135,7 +91,12 @@ export default class App extends Component {
 
   handlePresentShare = () => {
     Megacool.presentShare(
-      new MCLShareConfig().setStrategy(MCLSharingStrategy.Media)
+      new MCLShareConfig()
+        .setStrategy(MCLSharingStrategy.Media)
+        .setData({
+          foo: "bar"
+        })
+        .setModalTitle("Modal title")
     );
   };
 
@@ -184,13 +145,10 @@ export default class App extends Component {
     Megacool.setCaptureMethod(MCLCaptureMethod.OpenGLES3);
   };
 
-  handleGetPreview = () => {
-    Megacool.getPreview();
-    // Megacool.getPreview(
-    //   new MCLPreviewConfig()
-    //     .setRecordingId(RECORDING_ID)
-    //     .setPreviewFrame({ x: 10, y: 10, width: 300, height: 300 })
-    // );
+  handleTogglePreview = () => {
+    this.setState(state => ({
+      preview: !state.preview
+    }))
   };
 
   handleSetDefaultShareConfig = () => {
@@ -255,12 +213,10 @@ export default class App extends Component {
           <View style={styles.group}>
             <Text style={styles.title}>Status</Text>
             <View style={styles.textContent}>
-              <Text># of frames: {this.state.numberOfFrames}</Text>
+              <Text>Captured frames: {this.state.numberOfFrames}</Text>
               <Text>Shares sent: {this.state.shares.length}</Text>
-              <Text>Debug: {this.state.debugEnabled}</Text>
               <Text>Recording score: {this.state.recordingScore}</Text>
               <Text>User ID: {this.state.userId}</Text>
-              <Text>Capture method: {this.state.captureMethod}</Text>
             </View>
           </View>
           <View style={styles.group}>
@@ -270,6 +226,7 @@ export default class App extends Component {
               <Button text={"Pause"} onPress={this.handlePauseRecording} />
               <Button text={"Stop"} onPress={this.handleStopRecording} />
               <Button text={"Delete"} onPress={this.handleDeleteRecording} />
+              <Button text={"Capture Frame"} onPress={this.handleCaptureFrame} />
             </View>
           </View>
           <View style={styles.group}>
@@ -284,6 +241,39 @@ export default class App extends Component {
                 text={"to Mail"}
                 onPress={this.handlePresentShareToMail}
               />
+              <Button
+                text={"Share screenshot"}
+                onPress={this.handleShareScreenshot}
+              />
+            </View>
+          </View>
+          <View style={styles.group}>
+            <Text style={styles.title}>Scoring</Text>
+            <View style={styles.row}>
+              <Button
+                text={"Register score 0.5"}
+                onPress={this.handleRegisterScoreChange0_5}
+              />
+              <Button
+                text={"Register score 2"}
+                onPress={this.handleRegisterScoreChange2}
+              />
+            </View>
+          </View>
+          <View style={styles.group}>
+            <Text style={styles.title}>
+              Preview
+            </Text>
+            <View style={styles.textContent}>
+              {this.state.preview ? (
+                <MCLGifPreview style={{
+                  width: 400,
+                  height: 400,
+                  borderWidth: 1,
+                }} />
+              ) : null}
+
+              <Button text={"Toggle preview"} onPress={this.handleTogglePreview} />
             </View>
           </View>
           <View style={styles.group}>
@@ -293,7 +283,7 @@ export default class App extends Component {
             <View style={styles.row}>
               <Button text={"View"} onPress={this.handleSetCaptureMethodView} />
               <Button
-                text={"Metal"}
+                text={"Metal (iOS)"}
                 onPress={this.handleSetCaptureMethodMetal}
               />
               <Button
@@ -307,7 +297,7 @@ export default class App extends Component {
             </View>
           </View>
           <View style={styles.group}>
-            <Text style={styles.title}>Set default config</Text>
+            <Text style={styles.title}>Default config</Text>
             <View style={styles.row}>
               <Button
                 text={"Share"}
@@ -320,7 +310,7 @@ export default class App extends Component {
             </View>
           </View>
           <View style={styles.group}>
-            <Text style={styles.title}>Set GIF color table</Text>
+            <Text style={styles.title}>GIF color table</Text>
             <View style={styles.row}>
               <Button
                 text={"Dynamic"}
@@ -333,27 +323,6 @@ export default class App extends Component {
               <Button
                 text={"AnalyzeFirst"}
                 onPress={this.handleSetGifColorTableToAnalyzeFirst}
-              />
-            </View>
-          </View>
-          <View style={[styles.group, styles.row]}>
-            <Button text={"Capture Frame"} onPress={this.handleCaptureFrame} />
-            <Button
-              text={"Share screenshot"}
-              onPress={this.handleShareScreenshot}
-            />
-            <Button text={"Get preview"} onPress={this.handleGetPreview} />
-          </View>
-          <View style={styles.group}>
-            <Text style={styles.title}>Scoring</Text>
-            <View style={styles.row}>
-              <Button
-                text={"Register score 0.5"}
-                onPress={this.handleRegisterScoreChange0_5}
-              />
-              <Button
-                text={"Register score 2"}
-                onPress={this.handleRegisterScoreChange2}
               />
             </View>
           </View>
@@ -378,7 +347,7 @@ export default class App extends Component {
             </View>
           </View>
           <View style={styles.group}>
-            <Text style={styles.title}>Disable features</Text>
+            <Text style={styles.title}>Disable features (iOS)</Text>
             <View style={styles.row}>
               <Button text={"None"} onPress={this.handleDisableFeatureNone} />
               <Button
@@ -428,10 +397,8 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   group: {
-    margin: 5,
-    borderWidth: 1,
-    borderColor: "#ffbad0",
-    width: "95%"
+    marginVertical: 5,
+    width: "100%"
   },
   title: {
     fontWeight: "bold",

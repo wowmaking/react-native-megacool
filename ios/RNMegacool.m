@@ -1,5 +1,4 @@
 #import "RNMegacool.h"
-#import <Megacool/Megacool.h>
 
 @implementation RNMegacool
 
@@ -94,6 +93,10 @@ RCT_EXPORT_METHOD(presentShareToMail:(NSDictionary *)shareConfig)
     
     if (recordingConfig[@"frameRate"] != nil) {
         config.frameRate = [RCTConvert int:recordingConfig[@"frameRate"]];
+    }
+    
+    if (recordingConfig[@"playbackFrameRate"] != nil) {
+        config.playbackFrameRate = [RCTConvert int:recordingConfig[@"playbackFrameRate"]];
     }
     
     if (recordingConfig[@"peakLocation"] != nil) {
@@ -244,26 +247,12 @@ RCT_EXPORT_METHOD(registerScoreChange:(int)scoreDelta)
     [[Megacool sharedMegacool] registerScoreChange:scoreDelta];
 }
 
-RCT_EXPORT_METHOD(getNumberOfFrames:(RCTPromiseResolveBlock)resolve
+RCT_EXPORT_METHOD(getNumberOfFrames:(NSString *)recordingId
+                  resolver:(RCTPromiseResolveBlock)resolve
                   rejector:(RCTPromiseRejectBlock)reject)
 {
-    int num = [[Megacool sharedMegacool] getNumberOfFrames];
+    int num = [[Megacool sharedMegacool] getNumberOfFrames:recordingId];
     resolve([NSNumber numberWithInt:num]);
-}
-
-RCT_EXPORT_METHOD(getCaptureMethod:(RCTPromiseResolveBlock)resolve
-                  rejector:(RCTPromiseRejectBlock)reject)
-{
-    MCLCaptureMethod captureMethod = [[Megacool sharedMegacool] captureMethod];
-    if (captureMethod == kMCLCaptureMethodView) {
-        resolve(@"View");
-    } else if (captureMethod == kMCLCaptureMethodMetal) {
-        resolve(@"Metal");
-    } else if (captureMethod == kMCLCaptureMethodOpenGLES2) {
-        resolve(@"OpenGLES2");
-    } else if (captureMethod == kMCLCaptureMethodOpenGLES3) {
-        resolve(@"OpenGLES3");
-    }
 }
 
 RCT_EXPORT_METHOD(setCaptureMethod:(NSString *)captureMethod
@@ -278,15 +267,6 @@ RCT_EXPORT_METHOD(setCaptureMethod:(NSString *)captureMethod
     } else if ([captureMethod isEqualToString:@"OpenGLES3"]) {
         [[Megacool sharedMegacool] setCaptureMethod:kMCLCaptureMethodOpenGLES3 withScaleFactor:scaleFactor];
     }
-}
-
-RCT_EXPORT_METHOD(getPreview:(NSDictionary *)previewConfig)
-{
-    RCTExecuteOnMainQueue(^{
-        [[Megacool sharedMegacool] getPreviewWithConfig:^(MCLPreviewConfig * _Nonnull config) {
-            [self setPreviewConfig:config fromDictionary:previewConfig];
-        }];
-    });
 }
 
 RCT_EXPORT_METHOD(getShares:(RCTPromiseResolveBlock)resolve
