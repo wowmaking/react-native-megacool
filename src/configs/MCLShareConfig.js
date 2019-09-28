@@ -1,3 +1,6 @@
+/**
+ * Config
+ */
 export class MCLShareConfig {
   /**
    * Which recording to share. Only needed if you set a recordingId during capture

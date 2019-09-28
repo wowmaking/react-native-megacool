@@ -1,3 +1,6 @@
+/**
+ * Config
+ */
 export class MCLPreviewConfig {
   /**
    * Which recording to create a preview for.

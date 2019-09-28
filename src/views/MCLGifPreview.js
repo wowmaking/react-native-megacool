@@ -9,6 +9,9 @@ const { width, height } = Dimensions.get('window');
 
 const NativeMCLGifPreview = requireNativeComponent('MCLGifPreview');
 
+/**
+ * React Native component that can be used to render a preview of a captured gif
+ */
 export class MCLGifPreview extends React.PureComponent {
   render() {
     return (

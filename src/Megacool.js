@@ -14,8 +14,7 @@ import { MCLOverflowStrategy } from './enums/MCLOverflowStrategy';
 import { MCLSharingStrategy } from './enums/MCLSharingStrategy';
 
 /**
- *
- * @type {{start(string, MCLMegacoolConfig=): *, startRecording(MCLRecordingConfig=): *, pauseRecording(): *, stopRecording(): *, deleteRecording(string=): *, shareScreenshot(MCLRecordingConfig=, MCLShareConfig=): *, presentShare(MCLShareConfig=): *, presentShareToMessages(MCLShareConfig=): *, presentShareToMail(MCLShareConfig=): *, captureFrame(MCLRecordingConfig=, *=): *, registerScoreChange(number=): *, getNumberOfFrames(string=): Promise<number>, setCaptureMethod(MCLCaptureMethod, *=): *, getRecordingScore(string=): Promise<number>, getShares(): Promise<Array>, getUserId(): Promise<string>, setDefaultShareConfig(MCLShareConfig): *, setDefaultRecordingConfig(MCLRecordingConfig): *, setGifColorTable(MCLGIFColorTable): *, setKeepCompletedRecordings(boolean): *, setDebug(boolean): *, disableFeatures(Array<MCLFeature>): *}}
+ * Megacool
  */
 export const Megacool = {
   /**

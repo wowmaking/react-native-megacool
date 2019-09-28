@@ -1,3 +1,6 @@
+/**
+ * Config
+ * */
 export class MCLMegacoolConfig {
   /**
    * The base url to use when building the absolute share urls.

@@ -1,3 +1,6 @@
+/**
+ * Config
+ */
 export class MCLRecordingConfig {
   /**
    * Define how recordings longer than the specified max frames should be compressed.
