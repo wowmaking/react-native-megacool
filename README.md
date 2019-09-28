@@ -48,4 +48,4 @@ setTimeout(() => {
 }, 1000);
 ```
 
-For more, read the [API Reference](https://github.com/wowmaking/react-native-megacool/blob/master/API.md) or see the check out the [ExampleApp](https://github.com/wowmaking/react-native-megacool/blob/master/ExampleApp).
+For more, read the [API Reference](https://github.com/wowmaking/react-native-megacool/blob/master/API.md) or check out the [ExampleApp](https://github.com/wowmaking/react-native-megacool/blob/master/ExampleApp).
