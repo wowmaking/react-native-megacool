@@ -1,5 +1,7 @@
 # react-native-megacool
 
+React Native Megacool SDK bridge
+
 ## Getting started
 
 `$ npm install react-native-megacool --save`
