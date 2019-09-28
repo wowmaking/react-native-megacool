@@ -30,14 +30,22 @@
   	```
 3. Insert the following lines inside the dependencies block in `android/app/build.gradle`:
   	```
-      compile project(':react-native-megacool')
+      implementation project(':react-native-megacool')
   	```
 
 
 ## Usage
 ```javascript
-import Megacool from 'react-native-megacool';
+import { Megacool } from 'react-native-megacool';
 
-// TODO: What to do with the module?
-Megacool;
+Megacool.start('CONFIG_KEY');
+
+Megacool.startRecording();
+
+setTimeout(() => {
+  Megacool.stopRecording();
+  Megacool.presentShare();
+}, 1000);
 ```
+
+For more, read the [API Reference](https://github.com/wowmaking/react-native-megacool/blob/master/API.md) or see the check out the [ExampleApp](https://github.com/wowmaking/react-native-megacool/blob/master/ExampleApp).
