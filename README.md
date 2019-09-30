@@ -4,11 +4,11 @@ React Native Megacool SDK bridge
 
 ## Getting started
 
-`$ npm install react-native-megacool --save`
+`$ npm install @wowmaking/react-native-megacool --save`
 
 ### Mostly automatic installation
 
-`$ react-native link react-native-megacool`
+`$ react-native link @wowmaking/react-native-megacool`
 
 ### Manual installation
 
@@ -16,19 +16,19 @@ React Native Megacool SDK bridge
 #### iOS
 
 1. In XCode, in the project navigator, right click `Libraries` ➜ `Add Files to [your project's name]`
-2. Go to `node_modules` ➜ `react-native-megacool` and add `Megacool.xcodeproj`
+2. Go to `node_modules` ➜ `@wowmaking` ➜ `react-native-megacool` and add `Megacool.xcodeproj`
 3. In XCode, in the project navigator, select your project. Add `libMegacool.a` to your project's `Build Phases` ➜ `Link Binary With Libraries`
-4. Run your project (`Cmd+R`)<
+4. Run your project (`Cmd+R`)
 
 #### Android
 
 1. Open up `android/app/src/main/java/[...]/MainApplication.java`
-  - Add `import com.reactlibrary.MegacoolPackage;` to the imports at the top of the file
+  - Add `import net.wowmaking.MegacoolPackage;` to the imports at the top of the file
   - Add `new MegacoolPackage()` to the list returned by the `getPackages()` method
 2. Append the following lines to `android/settings.gradle`:
   	```
   	include ':react-native-megacool'
-  	project(':react-native-megacool').projectDir = new File(rootProject.projectDir, 	'../node_modules/react-native-megacool/android')
+  	project(':react-native-megacool').projectDir = new File(rootProject.projectDir, 	'../node_modules/@wowmaking/react-native-megacool/android')
   	```
 3. Insert the following lines inside the dependencies block in `android/app/build.gradle`:
   	```
@@ -38,7 +38,7 @@ React Native Megacool SDK bridge
 
 ## Usage
 ```javascript
-import { Megacool } from 'react-native-megacool';
+import { Megacool } from '@wowmaking/react-native-megacool';
 
 Megacool.start('CONFIG_KEY');
 
