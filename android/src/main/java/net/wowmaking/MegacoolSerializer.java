@@ -56,10 +56,11 @@ class MegacoolSerializer {
     private static final String GIF_COLOR_TABLE_ANALYZE_FIRST = "AnalyzeFirst";
 
     static MegacoolConfig readableMapToMegacoolConfig(ReadableMap readableMap) {
-        if (readableMap == null) {
-            return null;
-        }
         final MegacoolConfig config  = new MegacoolConfig();
+
+        if (readableMap == null) {
+            return config;
+        }
 
         if (readableMap.hasKey(KEY_BASE_URL)) {
             config.baseUrl(Uri.parse(readableMap.getString(KEY_BASE_URL)));
