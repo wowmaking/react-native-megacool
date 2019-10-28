@@ -1,34 +1,3 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="net.wowmaking">
-
-    <application>
-        <!-- Register to handle links via Megacool. This can be any activity -->
-        <!-- that you would like to handle links (including your MainActivity) -->
-        <activity android:name="com.example.MainActivity">
-            <!-- Normal https:// links -->
-            <intent-filter android:autoVerify="true">
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
-                <data
-                    android:host="@string/megacool_host"
-                    android:pathPrefix="@string/megacool_app_identifier"
-                    android:scheme="https"/>
-            </intent-filter>
-            <!-- Links with custom scheme where https doesn't work -->
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
-                <data android:scheme="@string/megacool_scheme"/>
-            </intent-filter>
-        </activity>
-        <!-- Ensure we receive referrals from the Play Store -->
-        <receiver android:name="co.megacool.megacool.ReferralReceiver">
-            <intent-filter>
-                <action android:name="com.android.vending.INSTALL_REFERRER"/>
-            </intent-filter>
-        </receiver>
-    </application>
-
 </manifest>
