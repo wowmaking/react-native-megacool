@@ -1,7 +1,7 @@
 {
   "name": "@wowmaking/react-native-megacool",
   "title": "React Native Megacool",
-  "version": "0.9.3",
+  "version": "0.9.4",
   "description": "React Native Megacool SDK bridge",
   "main": "src/index.js",
   "scripts": {
